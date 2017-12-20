@@ -1,0 +1,1 @@
+exampleAnimation_idle_0 -6 3 0.1exampleAnimation_idle_1 -9 4 0.1exampleAnimation_idle_2 -11 6 0.1exampleAnimation_idle_3 -6 5 0.1
