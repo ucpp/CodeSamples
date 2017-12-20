@@ -12,40 +12,40 @@ namespace TestTool.GameSeedSystem
 	{
 		public Randomizer Random
 		{
-			private set
-			{
-				_random = value;
-			}
 			get
 			{
 				if (_random == null)
 					StartWithNewSeed(SeedGameVersion);
 				return _random;
 			}
+			private set
+			{
+				_random = value;
+			}
 		}
 
 		public SeedEncrypter Encrypter
 		{
-			private set
-			{
-				_encrypter = value;
-			}
 			get
 			{
 				return _encrypter;
+			}
+			private set
+			{
+				_encrypter = value;
 			}
 		}
 
 		public string Seed
 		{
-			private set;
 			get;
+			private set;
 		}
 
 		public uint SeedGameVersion
 		{
-			private set;
 			get;
+			private set;
 		}
 
 		private const int FullLengthSeed = 8;

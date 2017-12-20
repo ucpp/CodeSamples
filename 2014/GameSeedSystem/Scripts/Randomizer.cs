@@ -13,8 +13,8 @@ namespace TestTool.GameSeedSystem
 	{
 		public string Seed
 		{
-			private set;
 			get;
+			private set;
 		}
 
 		private int _random;
