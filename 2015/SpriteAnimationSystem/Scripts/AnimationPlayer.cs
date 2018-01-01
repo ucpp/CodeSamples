@@ -230,28 +230,28 @@ namespace TestTool.SpriteAnimationSystem
 
 		private void CheckRandomMode(Mode mode)
 		{
-			if ((mode & Mode.RandomAnimation) != Mode.RandomAnimation && (this._mode & Mode.RandomAnimation) == Mode.RandomAnimation)
+			if (mode.HasFlag(Mode.RandomAnimation) && _mode.HasFlag(Mode.RandomAnimation))
 			{
-				this._animationsArray = null;
-				this._mode &= ~Mode.RandomAnimation;
+				_animationsArray = null;
+				_mode &= ~Mode.RandomAnimation;
 			}
 		}
 
 		private void CheckRandomFrameMode(Mode mode)
 		{
-			if ((mode & Mode.RandomStartFrame) == Mode.RandomStartFrame)
+			if (mode.HasFlag(Mode.RandomStartFrame))
 				currentTrack.SetRandomStartFrame();
 		}
 
 		private void CheckTrackListMode(Mode mode)
 		{
-			if ((mode & Mode.PlayTrackList) != Mode.PlayTrackList)
+			if (mode.HasFlag(Mode.PlayTrackList))
 				ClearTracks();
 		}
 
 		private bool CheckIdentityMode(Mode mode, string animationName)
 		{
-			if ((mode & Mode.CheckIdentity) == Mode.CheckIdentity && animationName == CurrentAnimationName)
+			if (mode.HasFlag(Mode.CheckIdentity) && animationName == CurrentAnimationName)
 			{
 				if (!string.IsNullOrEmpty(CurrentAnimationName))
 					return true;
@@ -261,7 +261,7 @@ namespace TestTool.SpriteAnimationSystem
 
 		private bool CheckIdentityMode(Mode mode, string[] animationNames)
 		{
-			if ((mode & Mode.CheckIdentity) == Mode.CheckIdentity && Equals(animationNames, _animationsArray))
+			if (mode.HasFlag(Mode.CheckIdentity) && Equals(animationNames, _animationsArray))
 			{
 				if (_animationsArray != null)
 					return true;
@@ -271,7 +271,7 @@ namespace TestTool.SpriteAnimationSystem
 
 		private bool CheckReverseTrack(Mode mode)
 		{
-			return (mode & Mode.PlayReverseTrack) == Mode.PlayReverseTrack;
+			return mode.HasFlag(Mode.PlayReverseTrack);
 		}
 
 		private bool Equals(string[] a, string[] b)
@@ -374,7 +374,7 @@ namespace TestTool.SpriteAnimationSystem
 				var frame = currentTrack.GetCurrentFrame();
 				if (_dt == 0)
 					SetFrame(frame);
-				_dt += deltaTime * TargetAnimationObject.timeScale;
+				_dt += deltaTime * TargetAnimationObject.TimeScale;
 				if (_dt >= frame.TimeLife)
 				{
 					_dt = 0;
